@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeri Wisata - Gumantar BKU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* --- Layout Grid --- */
+      .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.4s ease, opacity 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+        opacity: 0.9;
+      }
+
+      /* --- Teks overlay muncul saat hover --- */
+      .caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        text-align: center;
+        padding: 10px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .gallery-item:hover .caption {
+        opacity: 1;
+      }
+
+      /* --- Tombol animasi --- */
+      .toggle-btn {
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .toggle-btn:hover {
+        background-color: #2563eb;
+        transform: scale(1.05);
+      }
+
+      /* --- Transisi lembut untuk tampilan foto --- */
+      .hidden-photo {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .visible {
+        display: block;
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow sticky top-0 z-50">
+      <nav class="container mx-auto flex justify-between items-center p-4">
+        <div class="text-2xl font-bold text-blue-600">Gumantar BKU</div>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-500">Beranda</a></li>
+          <li>
+            <a href="destinasi.html" class="hover:text-blue-500">Destinasi</a>
+          </li>
+          <li>
+            <a href="galeri.html" class="text-blue-600 font-semibold">Galeri</a>
+          </li>
+          <li><a href="kontak.html" class="hover:text-blue-500">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Judul -->
+    <section class="text-center py-10 bg-blue-600 text-white">
+      <h1 class="text-4xl font-bold mb-2">Galeri Wisata Gumantar BKU</h1>
+      <p class="text-lg">
+        Nikmati keindahan alam dan budaya Gumantar Batukliang Utara
+      </p>
+    </section>
+
+    <!-- Tombol Toggle -->
+    <div class="container mx-auto text-center mt-8">
+      <button
+        id="toggleButton"
+        class="toggle-btn bg-blue-500 text-white px-6 py-2 rounded-full shadow hover:shadow-lg"
+      >
+        Tampilkan Semua Foto
+      </button>
+    </div>
+
+    <!-- Galeri -->
+    <section class="container mx-auto px-4 py-10">
+      <div class="gallery-container">
+        <!-- Foto 1 -->
+        <div class="gallery-item">
+          <img src="img/air terjun 3.jpeg" alt="Air Terjun " />
+          <div class="caption">Air Terjun</div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="gallery-item">
+          <img src="img/babak pelangi 2.jpeg" alt="Babak Pelangi" />
+          <div class="caption">Babak Pelangi</div>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="gallery-item">
+          <img src="img/HONEYMONN.jpg" alt="HONEYMONN" />
+          <div class="caption">Honeymonn</div>
+        </div>
+
+        <!-- Foto 4 -->
+        <div class="gallery-item">
+          <img src="img/danau biru2.jpg" alt="Danau Biru" />
+          <div class="caption">Danau Biru</div>
+        </div>
+
+        <!-- Foto 5 -->
+        <div class="gallery-item">
+          <img src="img/benag kelambu2.jpeg" alt="benag kelambu" />
+          <div class="caption">Benag Kelambu</div>
+        </div>
+
+        <!-- Foto 6 -->
+        <div class="gallery-item">
+          <img src="img/motor cros2.jpeg" alt="motor cros" />
+          <div class="caption">Motor Cros</div>
+        </div>
+
+        <!-- Foto 7 -->
+        <div class="gallery-item">
+          <img src="img/SAWAH.webp" alt="SAWAH" />
+          <div class="caption">Sawah</div>
+        </div>
+
+        <!-- Foto 8 -->
+        <div class="gallery-item hidden-photo">
+          <img
+            src="img/air terjun gunung janggot.webp"
+            alt="air terjun gunung janggot"
+          />
+          <div class="caption">air terjun gunung janggot</div>
+        </div>
+
+        <!-- Foto 9 -->
+        <div class="gallery-item hidden-photo">
+          <img src="img/sungai.jpeg" alt="sungai" />
+          <div class="caption">sungai</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white shadow py-4">
+      <div class="container mx-auto text-center text-gray-600">
+        © 2025 Pesona Gumantar Batukliang Utara. Semua hak cipta dilindungi.
+      </div>
+    </footer>
+
+    <!-- JavaScript Toggle -->
+    <script>
+      const toggleBtn = document.getElementById("toggleButton");
+      const hiddenPhotos = document.querySelectorAll(".hidden-photo");
+      let showAll = false;
+
+      toggleBtn.addEventListener("click", () => {
+        showAll = !showAll;
+        hiddenPhotos.forEach((photo) => {
+          if (showAll) {
+            photo.classList.add("visible");
+          } else {
+            photo.classList.remove("visible");
+          }
+        });
+
+        toggleBtn.textContent = showAll
+          ? "Sembunyikan Beberapa Foto"
+          : "Tampilkan Semua Foto";
+      });
+    </script>
+  </body>
+</html>

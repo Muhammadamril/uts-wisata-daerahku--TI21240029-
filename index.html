@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gumantar BKU - Beranda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Slideshow styling */
+      .hero-slide {
+        display: none;
+      }
+      .active-slide {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Header / Navigasi -->
+    <header class="bg-white shadow sticky top-0 z-50">
+      <nav class="container mx-auto flex justify-between items-center p-4">
+        <div class="text-2xl font-bold text-blue-600">Gumantar BKU</div>
+        <ul class="flex space-x-6">
+          <li>
+            <a href="index.html" class="hover:text-blue-500 font-semibold"
+              >Beranda</a
+            >
+          </li>
+          <li>
+            <a href="destinasi.html" class="hover:text-blue-500">Destinasi</a>
+          </li>
+          <li><a href="galeri.html" class="hover:text-blue-500">Galeri</a></li>
+          <li><a href="kontak.html" class="hover:text-blue-500">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ========================================================= -->
+    <!-- Hero / Banner Slideshow -->
+    <!-- ========================================================= -->
+    <section class="relative h-96 overflow-hidden">
+      <img
+        src="https://picsum.photos/id/1018/1200/400"
+        alt="Destinasi 1"
+        class="hero-slide w-full h-96 object-cover active-slide"
+      />
+      <img
+        src="https://picsum.photos/id/1015/1200/400"
+        alt="Destinasi 2"
+        class="hero-slide w-full h-96 object-cover"
+      />
+      <img
+        src="https://picsum.photos/id/1019/1200/400"
+        alt="Destinasi 3"
+        class="hero-slide w-full h-96 object-cover"
+      />
+      <img
+        src="https://picsum.photos/id/1020/1200/400"
+        alt="Destinasi 4"
+        class="hero-slide w-full h-96 object-cover"
+      />
+      <img
+        src="https://picsum.photos/id/1021/1200/400"
+        alt="Destinasi 5"
+        class="hero-slide w-full h-96 object-cover"
+      />
+
+      <!-- Overlay teks di atas gambar -->
+      <div
+        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"
+      >
+        <h1 class="text-white text-4xl md:text-5xl font-bold text-center px-4">
+          Selamat Datang di Wisata Pesona Gumantar Batukliang Utara
+        </h1>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- Ringkasan Fitur Wisata -->
+    <!-- ========================================================= -->
+    <section class="container mx-auto py-12">
+      <h2 class="text-3xl font-bold text-center mb-8">Fitur Wisata</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Fitur 1 -->
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition text-center"
+        >
+          <h3 class="text-xl font-semibold mb-2">Alam</h3>
+          <p>
+            <img src="img/alam.jpg" alt="" width="500px" />
+            Menjelajahi keindahan alam seperti kolam, gunung, sungai, dan air
+            terjun.
+          </p>
+        </div>
+
+        <!-- Fitur 2 -->
+        <div
+          class="bg-white p-5 rounded-lg shadow hover:shadow-lg transition text-center"
+        >
+          <h3 class="text-xl font-semibold mb-5">Budaya</h3>
+          <p>
+            <img src="img/budaya.jpeg" alt="" width="500px" />
+            Mengenal budaya lokal, tradisi, dan kesenian daerah yang masih
+            lestari.
+          </p>
+        </div>
+
+        <!-- Fitur 3 -->
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition text-center"
+        >
+          <h3 class="text-xl font-semibold mb-2">Kuliner</h3>
+          <p>
+            <img src="img/kuliner.jpeg" alt="" width="500px" />
+            Mencicipi makanan khas daerah dengan cita rasa unik dan autentik.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- Footer -->
+    <!-- ========================================================= -->
+    <footer class="bg-white shadow mt-12">
+      <div
+        class="container mx-auto py-6 flex flex-col md:flex-row justify-between items-center"
+      >
+        <p class="text-gray-600 text-center md:text-left">
+          © 2025 Pesona Gumantar Batukliang Utara. Semua hak cipta dilindungi.
+        </p>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+          <a
+            href="https://www.facebook.com/amril.da.1"
+            class="text-blue-600 hover:text-blue-800"
+            >Facebook</a
+          >
+          <a
+            href="https://www.tiktok.com/@amril123_04_april?_r=1&_t=ZS-91FXe6gUW8o"
+            class="text-gray-600 hover:text-gray-800"
+            >TikTok</a
+          >
+          <a
+            href="https://www.instagram.com/amril.da.1?igsh=NnhkaWM5b2Z5dTdk"
+            class="text-pink-500 hover:text-pink-700"
+            >Instagram</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========================================================= -->
+    <!-- Script Slideshow -->
+    <!-- ========================================================= -->
+    <script>
+      let slideIndex = 0;
+      const slides = document.querySelectorAll(".hero-slide");
+
+      function showSlides() {
+        slides.forEach((s) => s.classList.remove("active-slide"));
+        slideIndex++;
+        if (slideIndex > slides.length) slideIndex = 1;
+        slides[slideIndex - 1].classList.add("active-slide");
+        setTimeout(showSlides, 5000); // ganti tiap 5 detik
+      }
+
+      showSlides();
+    </script>
+  </body>
+</html>

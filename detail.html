@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Destinasi - Air Terjun Gumantar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Efek transisi lembut */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .calc-input {
+        transition: all 0.3s ease;
+      }
+      .calc-input:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 6px rgba(37, 99, 235, 0.4);
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow sticky top-0 z-50">
+      <nav class="container mx-auto flex justify-between items-center p-4">
+        <div class="text-2xl font-bold text-blue-600">Gumantar BKU</div>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-500">Beranda</a></li>
+          <li>
+            <a href="destinasi.html" class="hover:text-blue-500">Destinasi</a>
+          </li>
+          <li><a href="galeri.html" class="hover:text-blue-500">Galeri</a></li>
+          <li><a href="kontak.html" class="hover:text-blue-500">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Detail Destinasi -->
+    <section class="container mx-auto py-12 px-4 fade-in">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img
+          src="img/air terjun 3.jpeg"
+          alt="Air Terjun "
+          class="w-full h-100 object-cover"
+        />
+        <div class="p-6">
+          <h1 class="text-3xl font-bold text-blue-600 mb-4">Air Terjun</h1>
+          <p class="text-gray-700 mb-4">
+            Air Terjun merupakan salah satu destinasi wisata alam unggulan di
+            Batukliang Utara. Dikelilingi oleh hutan tropis dan udara sejuk,
+            tempat ini menawarkan suasana alami yang menenangkan. Cocok untuk
+            berpetualang, bersantai, atau sekadar menikmati panorama alam. Di
+            sini Anda bisa menikmati air terjun yang indah, trekking ringan, dan
+            spot foto menawan.
+          </p>
+          <ul class="list-disc ml-6 text-gray-600 mb-6">
+            <li>
+              Lokasi: Desa Aik Berik, Batukliang Utara, Lombok Tenggah,NTB
+            </li>
+            <li>Jam Buka: 07.00 - 17.00 WITA</li>
+            <li>Harga Tiket Masuk: Rp 10.000/orang</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fitur: Info Cuaca -->
+    <section class="container mx-auto mb-10 fade-in">
+      <h2 class="text-2xl font-semibold mb-3 text-blue-600">
+        🌤 Info Cuaca Saat Ini
+      </h2>
+      <button
+        id="btnCuaca"
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        Tampilkan Info Cuaca
+      </button>
+      <p id="infoCuaca" class="mt-3 text-lg font-medium text-gray-700"></p>
+    </section>
+
+    <!-- Kalkulator Estimasi Biaya -->
+    <section
+      class="container mx-auto bg-white shadow-lg rounded-lg p-8 mb-10 fade-in"
+    >
+      <h2 class="text-2xl font-bold text-blue-600 mb-4">
+        💰 Kalkulator Estimasi Biaya Perjalanan
+      </h2>
+      <p class="text-gray-700 mb-6">
+        Masukkan jarak perjalanan dari lokasi Anda dan pilih jenis transportasi
+        untuk mengetahui estimasi biaya perjalanan ke destinasi ini.
+      </p>
+
+      <form id="calcForm" class="space-y-4">
+        <!-- Input jarak -->
+        <div>
+          <label for="jarak" class="block font-medium mb-1">Jarak (km)</label>
+          <input
+            type="number"
+            id="jarak"
+            placeholder="Masukkan jarak (km)"
+            class="calc-input w-full border border-gray-300 rounded-lg p-2 focus:outline-none"
+            required
+          />
+        </div>
+
+        <!-- Pilihan transportasi -->
+        <div>
+          <label for="transportasi" class="block font-medium mb-1"
+            >Transportasi</label
+          >
+          <select
+            id="transportasi"
+            class="calc-input w-full border border-gray-300 rounded-lg p-2 focus:outline-none"
+          >
+            <option value="">-- Pilih Jenis Transportasi --</option>
+            <option value="motor">Motor (Rp 2.000/km)</option>
+            <option value="mobil">Mobil (Rp 5.000/km)</option>
+            <option value="bus">Bus (Rp 3.000/km)</option>
+          </select>
+        </div>
+
+        <!-- Tombol Hitung -->
+        <button
+          type="button"
+          id="hitungBtn"
+          class="bg-blue-500 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-600 transition"
+        >
+          Hitung Estimasi Biaya
+        </button>
+
+        <!-- Hasil -->
+        <div id="hasil" class="mt-4 text-lg font-semibold text-blue-700"></div>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white shadow py-4">
+      <div class="container mx-auto text-center text-gray-600">
+        © 2025 Pesona Gumantar Batukliang Utara. Semua hak cipta dilindungi.
+      </div>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+      // Efek animasi masuk
+      document.addEventListener("DOMContentLoaded", () => {
+        const elements = document.querySelectorAll(".fade-in");
+        elements.forEach((el, i) => {
+          setTimeout(() => el.classList.add("visible"), i * 200);
+        });
+      });
+
+      // Tombol Info Cuaca
+      const btnCuaca = document.getElementById("btnCuaca");
+      const infoCuaca = document.getElementById("infoCuaca");
+
+      btnCuaca.addEventListener("click", () => {
+        const cuacaList = [
+          "Cerah 🌞",
+          "Berawan ⛅",
+          "Hujan 🌧️",
+          "Gerimis 🌦️",
+          "Mendung ☁️",
+        ];
+        const randomCuaca =
+          cuacaList[Math.floor(Math.random() * cuacaList.length)];
+        infoCuaca.innerText = "Perkiraan cuaca di lokasi: " + randomCuaca;
+      });
+
+      // Kalkulator Biaya Perjalanan
+      const jarakInput = document.getElementById("jarak");
+      const transportasiSelect = document.getElementById("transportasi");
+      const hitungBtn = document.getElementById("hitungBtn");
+      const hasil = document.getElementById("hasil");
+
+      hitungBtn.addEventListener("click", () => {
+        const jarak = parseFloat(jarakInput.value);
+        const transportasi = transportasiSelect.value;
+        let biayaPerKm = 0;
+
+        if (isNaN(jarak) || jarak <= 0 || transportasi === "") {
+          hasil.innerText =
+            "⚠️ Mohon isi jarak dan pilih transportasi dengan benar.";
+          hasil.classList.add("text-red-600");
+          return;
+        }
+
+        if (transportasi === "motor") biayaPerKm = 2000;
+        else if (transportasi === "mobil") biayaPerKm = 5000;
+        else if (transportasi === "bus") biayaPerKm = 3000;
+
+        const total = jarak * biayaPerKm;
+        hasil.classList.remove("text-red-600");
+        hasil.innerText = `💵 Estimasi Biaya: Rp ${total.toLocaleString(
+          "id-ID"
+        )}`;
+      });
+    </script>
+  </body>
+</html>
